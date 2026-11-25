@@ -1,0 +1,22 @@
+{
+  "name": "petrest",
+  "version": "1.0.0",
+  "description": "API RESTful développée dans le cadre du Projet Backend au CPNV (Sainte-Croix).",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["petrest", "express", "mysql", "api"],
+  "author": "Taveeporn Matta, Eyuel Worku",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.6"
+  }
+}
