@@ -48,11 +48,21 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Démarrage du serveur uniquement si ce fichier est exécuté directement
+// Démarrage du serveur uniquement si ce fichier est exécuté directement.
+// La connexion MySQL est vérifiée avant d'écouter les requêtes.
 if (require.main === module) {
-  app.listen(PORT, () => {
-    console.log(`Serveur PetREST démarré sur http://localhost:${PORT}`);
-  });
+  const { testConnection } = require('./config/db');
+
+  testConnection()
+    .then(() => {
+      app.listen(PORT, () => {
+        console.log(`Serveur PetREST démarré sur http://localhost:${PORT}`);
+      });
+    })
+    .catch(() => {
+      console.error('Arrêt du serveur : base de données inaccessible.');
+      process.exit(1);
+    });
 }
 
 module.exports = app;
