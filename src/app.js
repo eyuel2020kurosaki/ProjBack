@@ -11,6 +11,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -30,6 +31,9 @@ app.get('/ping', (req, res) => {
     message: 'pong',
   });
 });
+
+// Routes de l'API
+app.use('/api/auth', authRoutes);
 
 // Gestion des routes inexistantes (404)
 app.use((req, res) => {
